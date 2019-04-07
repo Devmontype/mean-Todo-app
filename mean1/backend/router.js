@@ -24,8 +24,8 @@ router.post('/addTodo',(req,res)=>{
         time:req.body.time,
         complit:{
             dt:'not yet complited',
-            time:'not yet complited',
-            done:'no'
+            time:'not yet complited'
+           
         }
     });
     todo.save().then(function(){
