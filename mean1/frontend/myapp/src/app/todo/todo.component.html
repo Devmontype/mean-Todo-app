@@ -1,0 +1,59 @@
+<div class="div">
+    <h1><u>Enter Todo Task</u></h1>
+<form [formGroup]="todoForm" (ngSubmit)="addTodo()">
+<input type="text" placeholder='Enter item' formControlName="item" required>
+<!--<input type="text" value="{{currentTime}}" formControlName="dt"   disabled/>
+<input type="text" value="{{currentDate}}" formControlName="time" disabled/>-->
+<br/>
+<button type="Sumbit" class="button button2">AddTodo</button>
+<button type="reset" class="button button2">Refresh</button>
+</form>
+
+<!--Show todos-->
+<h1><u>Table Of Todo Tasks</u></h1>
+<div *ngIf="todos?.length==0">
+  <p> no todo exists</p>
+</div>
+<div *ngIf="todos?.length>0">
+  <table>
+    <tr>
+      <th>Tasks</th>
+      <th>IssueDate</th>
+      <th>IssueTime</th>
+      <th>Action</th>
+    </tr>
+    <tr *ngFor="let todo of todos">
+      <td class="items" >{{todo.name}}</td>
+      <td class="items" >{{todo.dt}}</td>
+      <td class="items" >{{todo.time}}</td>
+      <td class="items" (click)="delTodo(todo._id)">Click to Remove</td>
+    </tr>
+  </table>
+</div>
+
+<!--show complited todos-->
+<h1><u>Details of Tasks</u></h1>
+<div *ngIf="complitedTodo?.length==0">
+  <p> no task complited</p>
+</div>
+<div *ngIf="complitedTodo?.length>0">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>IssueDate</th>
+      <th>IssueTime</th>
+      <th>Complition Date</th>
+      <th>Complition Time</th>
+      <th>Action</th>
+    </tr>
+    <tr *ngFor="let todo of complitedTodo">
+      <td class="items" >{{todo.name}}</td>
+      <td class="items" >{{todo.dt}}</td>
+      <td class="items" >{{todo.time}}</td>
+      <td class="items" >{{todo.complit.dt}}</td>
+      <td class="items" >{{todo.complit.time}}</td>
+      <td class="items" (click)="delCompTodo(todo._id)">Delete From Database</td>
+    </tr>
+  </table>
+</div>
+</div>
